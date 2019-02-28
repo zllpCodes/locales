@@ -28,7 +28,7 @@ export default function (lang, url, isAsync, callback, expired) {
     // 是否发送请求
     if (needAjax) {
         _ajax(url, isAsync, function (data) {
-            // 将获取的语言包缓存到本地并设置过期时间
+            // 将获取的语言包缓存到本地并设置过期时间，默认过期时间为7天
             localStorage.setItem(`lang_${lang}`, JSON.stringify(data));
             localStorage.setItem(`lang_${lang}_expired`, (new Date().getTime() + expired || 1000 * 60 * 60 * 24 * 7))
             callback ? callback(data) : null;
